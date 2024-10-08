@@ -9,31 +9,34 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-var getPlaylistCmd = &cobra.Command{
-	Use:   "getPlaylist",
-	Short: "get playlist",
+var addPlaylistCmd = &cobra.Command{
+	Use:   "addPlaylist",
+	Short: "create new playlist",
 	Long: ``,
-	Run: getPlaylist,
+	Run: addPlaylist,
 }
 
-func getPlaylist(cmd *cobra.Command, args []string) {
+var playlistName string
+
+func addPlaylist(cmd *cobra.Command, args []string) {
 	host, port := getHostPort()
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", host, port), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		fmt.Println("Error:", err)
+		return
 	}
 	defer conn.Close()
 	client := api.NewMusicServiceClient(conn)
-	response, err := client.GetPlaylist(context.Background(), &api.Playlist{Name: playlistName})
+	playlist := new(api.Playlist)
+	playlist.Name = playlistName
+	response, err := client.AddPlaylist(context.Background(), playlist)
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
-	for i, e := range response.Songs {
-		fmt.Printf("№%d. Song: %s\n", i + 1, e)
-	}
+	fmt.Println(response.Response)
 }
 
 func init() {
-	rootCmd.AddCommand(getPlaylistCmd)
-	getPlaylistCmd.Flags().StringVar(&playlistName, "playlistName", "unknown", "")
+	rootCmd.AddCommand(addPlaylistCmd)
+	addPlaylistCmd.Flags().StringVar(&playlistName, "playlistName", "unknown", "")
 }

@@ -9,14 +9,14 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-var getPlaylistCmd = &cobra.Command{
-	Use:   "getPlaylist",
-	Short: "get playlist",
+var printPlaylistCmd = &cobra.Command{
+	Use:   "printPlaylist",
+	Short: "print all songs in playlist",
 	Long: ``,
-	Run: getPlaylist,
+	Run: printPlaylist,
 }
 
-func getPlaylist(cmd *cobra.Command, args []string) {
+func printPlaylist(cmd *cobra.Command, args []string) {
 	host, port := getHostPort()
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", host, port), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -34,6 +34,6 @@ func getPlaylist(cmd *cobra.Command, args []string) {
 }
 
 func init() {
-	rootCmd.AddCommand(getPlaylistCmd)
-	getPlaylistCmd.Flags().StringVar(&playlistName, "playlistName", "unknown", "")
+	rootCmd.AddCommand(printPlaylistCmd)
+	printPlaylistCmd.Flags().StringVar(&playlistName, "playlistName", "unknown", "")
 }

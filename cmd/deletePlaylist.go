@@ -9,14 +9,14 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-var getPlaylistCmd = &cobra.Command{
+var deletePlaylistCmd = &cobra.Command{
 	Use:   "getPlaylist",
-	Short: "get playlist",
+	Short: "delete playlist",
 	Long: ``,
-	Run: getPlaylist,
+	Run: deletePlaylist,
 }
 
-func getPlaylist(cmd *cobra.Command, args []string) {
+func DeletePlaylist(cmd *cobra.Command, args []string) {
 	host, port := getHostPort()
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", host, port), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -24,7 +24,7 @@ func getPlaylist(cmd *cobra.Command, args []string) {
 	}
 	defer conn.Close()
 	client := api.NewMusicServiceClient(conn)
-	response, err := client.GetPlaylist(context.Background(), &api.Playlist{Name: playlistName})
+	response, err := client.DeletePlaylist(context.Background(), &api.Playlist{Name: playlistName})
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
@@ -34,6 +34,6 @@ func getPlaylist(cmd *cobra.Command, args []string) {
 }
 
 func init() {
-	rootCmd.AddCommand(getPlaylistCmd)
-	getPlaylistCmd.Flags().StringVar(&playlistName, "playlistName", "unknown", "")
+	rootCmd.AddCommand(deletePlaylistCmd)
+	deletePlaylistCmd.Flags().StringVar(&playlistName, "playlistName", "unknown", "")
 }

@@ -14,7 +14,7 @@ make
 
 ### Примеры:
 ./music_service play \
-./music_service add --songName "Hello" --songAuthor "Adele" --duration 31 
+./music_service add --songName "Hello" --songAuthor "Adele" --songDuration 31 
 
 ### Интерактивный режим:
 ./music_service interactive

@@ -9,18 +9,18 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-var addCmd = &cobra.Command{
-	Use:   "add",
-	Short: "add new song to playlist",
+var addSongCmd = &cobra.Command{
+	Use:   "addSong",
+	Short: "addSong new song to playlist",
 	Long: ``,
-	Run: add,
+	Run: addSong,
 }
 
 var songName string
 var songAuthor string
 var duration int
 
-func add(cmd *cobra.Command, args []string) {
+func addSong(cmd *cobra.Command, args []string) {
 	host, port := getHostPort()
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", host, port), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -41,8 +41,8 @@ func add(cmd *cobra.Command, args []string) {
 }
 
 func init() {
-	rootCmd.AddCommand(addCmd)
-	addCmd.Flags().StringVar(&songName, "songName", "unknown", "")
-	addCmd.Flags().StringVar(&songAuthor, "songAuthor", "unknown", "")
-	addCmd.Flags().IntVar(&duration, "songDuration", 30, "")
+	rootCmd.AddCommand(addSongCmd)
+	addSongCmd.Flags().StringVar(&songName, "songName", "unknown", "")
+	addSongCmd.Flags().StringVar(&songAuthor, "songAuthor", "unknown", "")
+	addSongCmd.Flags().IntVar(&duration, "songDuration", 30, "")
 }

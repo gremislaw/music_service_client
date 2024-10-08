@@ -9,14 +9,14 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-var deleteCmd = &cobra.Command{
-	Use:   "delete",
+var deleteSongCmd = &cobra.Command{
+	Use:   "deleteSong",
 	Short: "delete song from playlist by name",
 	Long: ``,
-	Run: delete,
+	Run: deleteSong,
 }
 
-func delete(cmd *cobra.Command, args []string) {
+func deleteSong(cmd *cobra.Command, args []string) {
 	host, port := getHostPort()
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", host, port), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -32,6 +32,6 @@ func delete(cmd *cobra.Command, args []string) {
 }
 
 func init() {
-	rootCmd.AddCommand(deleteCmd)
-	deleteCmd.Flags().StringVar(&songName, "songName", "unknown", "")
+	rootCmd.AddCommand(deleteSongCmd)
+	deleteSongCmd.Flags().StringVar(&songName, "songName", "unknown", "")
 }
