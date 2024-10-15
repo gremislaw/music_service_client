@@ -2,10 +2,8 @@ module music_service_client
 
 go 1.23.1
 
-replace github.com/gremislaw/music_service/api => /Users/gremislaw/Projects/Golang/music_service/api
-
 require (
-	github.com/gremislaw/music_service/api v0.0.0-20241004183618-aadacef47fc1
+	github.com/gremislaw/music_service/api v0.0.0-20241015121829-56bfdbea5be5
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0
 	google.golang.org/grpc v1.67.1

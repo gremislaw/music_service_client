@@ -32,7 +32,11 @@ func deleteSongFromPlaylist(cmd *cobra.Command, args []string) {
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
-	fmt.Println(response.Response)
+	if response == nil {
+		fmt.Println("Error:", "not found")
+	} else {
+		fmt.Println(response.Response)
+	}
 }
 
 func init() {
