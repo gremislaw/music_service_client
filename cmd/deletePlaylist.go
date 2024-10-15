@@ -10,10 +10,10 @@ import (
 )
 
 var deletePlaylistCmd = &cobra.Command{
-	Use:   "getPlaylist",
+	Use:   "DeletePlaylist",
 	Short: "delete playlist",
 	Long: ``,
-	Run: deletePlaylist,
+	Run: DeletePlaylist,
 }
 
 func DeletePlaylist(cmd *cobra.Command, args []string) {
@@ -28,9 +28,7 @@ func DeletePlaylist(cmd *cobra.Command, args []string) {
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
-	for i, e := range response.Songs {
-		fmt.Printf("№%d. Song: %s\n", i + 1, e)
-	}
+	fmt.Println(response.Response)
 }
 
 func init() {

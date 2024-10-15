@@ -11,7 +11,7 @@ import (
 
 var addSongCmd = &cobra.Command{
 	Use:   "addSong",
-	Short: "addSong new song to playlist",
+	Short: "addSong new song",
 	Long: ``,
 	Run: addSong,
 }

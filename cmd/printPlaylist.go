@@ -24,12 +24,16 @@ func printPlaylist(cmd *cobra.Command, args []string) {
 	}
 	defer conn.Close()
 	client := api.NewMusicServiceClient(conn)
-	response, err := client.GetPlaylist(context.Background(), &api.Playlist{Name: playlistName})
+	response, err := client.PrintPlaylist(context.Background(), &api.Playlist{Name: playlistName})
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
-	for i, e := range response.Songs {
+	if response == nil {
+		fmt.Println("Error:", "not found")
+	} else {
+		for i, e := range response.Songs {
 		fmt.Printf("№%d. Song: %s\n", i + 1, e)
+		}
 	}
 }
 

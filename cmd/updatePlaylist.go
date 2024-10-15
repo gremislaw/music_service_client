@@ -9,14 +9,14 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-var getPlaylistCmd = &cobra.Command{
-	Use:   "getPlaylist",
-	Short: "get playlist",
+var updatePlaylistCmd = &cobra.Command{
+	Use:   "updatePlaylist",
+	Short: "update current playlist name",
 	Long: ``,
-	Run: getPlaylist,
+	Run: updatePlaylist,
 }
 
-func getPlaylist(cmd *cobra.Command, args []string) {
+func updatePlaylist(cmd *cobra.Command, args []string) {
 	host, port := getHostPort()
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", host, port), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
@@ -24,18 +24,13 @@ func getPlaylist(cmd *cobra.Command, args []string) {
 	}
 	defer conn.Close()
 	client := api.NewMusicServiceClient(conn)
-	response, err := client.GetPlaylist(context.Background(), &api.Playlist{Name: playlistName})
+	response, err := client.UpdatePlaylist(context.Background(), &api.Playlist{Name: playlistName})
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
-	if response == nil {
-		fmt.Println("Error:", "not found")
-	} else {
-		fmt.Println(response.Response)
-	}
+	fmt.Println(response.Response)
 }
 
 func init() {
-	rootCmd.AddCommand(getPlaylistCmd)
-	getPlaylistCmd.Flags().StringVar(&playlistName, "playlistName", "unknown", "")
+	rootCmd.AddCommand(updatePlaylistCmd)
 }
