@@ -6,20 +6,18 @@
 ### Команда сборки:
 make
 
+### Перейти в папку `bin`
+cd bin
+
 ### Список доступных комманд:
 ./music_service --help
 
 ### Просмотр необходимых опций комманд:
 ./music_service add --help
 
-### Примеры:
-./music_service play \
-./music_service add --songName "Hello" --songAuthor "Adele" --songDuration 31 
-
-### Интерактивный режим:
-./music_service interactive
-### Интерактивный режим пример:
-./music_service interactive \
-play \
-add wrong \
-add "Hello" "Adele" 90
+### Пример:
+./music_service add --songName "Hello" --songAuthor "Adele" --songDuration 31
+./music_service addSongToPlaylist --songName "Hello" --playlistName "Pop"
+./music_service getPlaylist --playlistName "Pop"
+./music_service play
+./music_service deletePlaylist --playlistName "Pop"
