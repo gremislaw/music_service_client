@@ -4,20 +4,24 @@
 
 
 ### Команда сборки:
-make
+- `make`
 
 ### Перейти в папку `bin`
-cd bin
+- `cd bin`
 
 ### Список доступных комманд:
-./music_service --help
+- `./music_service --help`
 
 ### Просмотр необходимых опций комманд:
-./music_service add --help
+- `./music_service add --help`
 
 ### Пример:
-./music_service add --songName "Hello" --songAuthor "Adele" --songDuration 31
-./music_service addSongToPlaylist --songName "Hello" --playlistName "Pop"
-./music_service getPlaylist --playlistName "Pop"
-./music_service play
-./music_service deletePlaylist --playlistName "Pop"
+- `./music_service add --songName "Hello" --songAuthor "Adele" --songDuration 31`
+  
+- `./music_service addSongToPlaylist --songName "Hello" --playlistName "Pop"`
+  
+- `./music_service getPlaylist --playlistName "Pop"`
+  
+- `./music_service play`
+  
+- `./music_service deletePlaylist --playlistName "Pop"`
