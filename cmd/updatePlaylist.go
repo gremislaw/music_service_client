@@ -12,8 +12,8 @@ import (
 var updatePlaylistCmd = &cobra.Command{
 	Use:   "updatePlaylist",
 	Short: "update current playlist name",
-	Long: ``,
-	Run: updatePlaylist,
+	Long:  ``,
+	Run:   updatePlaylist,
 }
 
 func updatePlaylist(cmd *cobra.Command, args []string) {

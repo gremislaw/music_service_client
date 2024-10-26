@@ -12,8 +12,8 @@ import (
 var deletePlaylistCmd = &cobra.Command{
 	Use:   "DeletePlaylist",
 	Short: "delete playlist",
-	Long: ``,
-	Run: DeletePlaylist,
+	Long:  ``,
+	Run:   DeletePlaylist,
 }
 
 func DeletePlaylist(cmd *cobra.Command, args []string) {

@@ -12,10 +12,9 @@ import (
 var playCmd = &cobra.Command{
 	Use:   "play",
 	Short: "play current song",
-	Long: ``,
-	Run: play,
+	Long:  ``,
+	Run:   play,
 }
-
 
 func play(cmd *cobra.Command, args []string) {
 	host, port := getHostPort()

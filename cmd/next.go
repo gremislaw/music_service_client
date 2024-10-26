@@ -12,8 +12,8 @@ import (
 var nextCmd = &cobra.Command{
 	Use:   "next",
 	Short: "play next song in playlist",
-	Long: ``,
-	Run: next,
+	Long:  ``,
+	Run:   next,
 }
 
 func next(cmd *cobra.Command, args []string) {

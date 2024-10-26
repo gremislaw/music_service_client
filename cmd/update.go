@@ -12,8 +12,8 @@ import (
 var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "update song by name",
-	Long: ``,
-	Run: update,
+	Long:  ``,
+	Run:   update,
 }
 
 func update(cmd *cobra.Command, args []string) {

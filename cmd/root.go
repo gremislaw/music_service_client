@@ -1,15 +1,15 @@
 package cmd
 
 import (
-	"os"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"os"
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "music_service_client",
 	Short: "A brief description of your application",
-	Long: ``,
+	Long:  ``,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
@@ -26,7 +26,7 @@ func Execute() {
 
 var _config string
 
-func getHostPort() (string, string){
+func getHostPort() (string, string) {
 	viper.SetConfigFile(_config)
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -41,5 +41,3 @@ func init() {
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.PersistentFlags().StringVar(&_config, "config", "config.yaml", "")
 }
-
-

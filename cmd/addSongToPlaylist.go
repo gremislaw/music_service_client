@@ -12,8 +12,8 @@ import (
 var addSongToPlaylistCmd = &cobra.Command{
 	Use:   "addSongToPlaylist",
 	Short: "add new song to playlist",
-	Long: ``,
-	Run: addSongToPlaylist,
+	Long:  ``,
+	Run:   addSongToPlaylist,
 }
 
 func addSongToPlaylist(cmd *cobra.Command, args []string) {

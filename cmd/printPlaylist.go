@@ -12,8 +12,8 @@ import (
 var printPlaylistCmd = &cobra.Command{
 	Use:   "printPlaylist",
 	Short: "print all songs in playlist",
-	Long: ``,
-	Run: printPlaylist,
+	Long:  ``,
+	Run:   printPlaylist,
 }
 
 func printPlaylist(cmd *cobra.Command, args []string) {
@@ -32,7 +32,7 @@ func printPlaylist(cmd *cobra.Command, args []string) {
 		fmt.Println("Error:", "not found")
 	} else {
 		for i, e := range response.Songs {
-		fmt.Printf("№%d. Song: %s\n", i + 1, e)
+			fmt.Printf("№%d. Song: %s\n", i+1, e)
 		}
 	}
 }

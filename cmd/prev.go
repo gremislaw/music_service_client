@@ -12,8 +12,8 @@ import (
 var prevCmd = &cobra.Command{
 	Use:   "prev",
 	Short: "play prev song in playlist",
-	Long: ``,
-	Run: prev,
+	Long:  ``,
+	Run:   prev,
 }
 
 func prev(cmd *cobra.Command, args []string) {

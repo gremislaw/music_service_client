@@ -12,8 +12,8 @@ import (
 var addPlaylistCmd = &cobra.Command{
 	Use:   "addPlaylist",
 	Short: "create new playlist",
-	Long: ``,
-	Run: addPlaylist,
+	Long:  ``,
+	Run:   addPlaylist,
 }
 
 var playlistName string

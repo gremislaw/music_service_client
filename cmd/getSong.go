@@ -12,8 +12,8 @@ import (
 var getSongCmd = &cobra.Command{
 	Use:   "getSong",
 	Short: "get specific song by name",
-	Long: ``,
-	Run: getSong,
+	Long:  ``,
+	Run:   getSong,
 }
 
 func getSong(cmd *cobra.Command, args []string) {

@@ -12,8 +12,8 @@ import (
 var pauseCmd = &cobra.Command{
 	Use:   "pause",
 	Short: "pause song",
-	Long: ``,
-	Run: pause,
+	Long:  ``,
+	Run:   pause,
 }
 
 func pause(cmd *cobra.Command, args []string) {

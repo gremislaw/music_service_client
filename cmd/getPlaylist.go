@@ -12,8 +12,8 @@ import (
 var getPlaylistCmd = &cobra.Command{
 	Use:   "getPlaylist",
 	Short: "get playlist",
-	Long: ``,
-	Run: getPlaylist,
+	Long:  ``,
+	Run:   getPlaylist,
 }
 
 func getPlaylist(cmd *cobra.Command, args []string) {
